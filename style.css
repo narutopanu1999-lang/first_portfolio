@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial: Prevents padding from adding to width/height */
+    font-family: 'Gill Sans', sans-serif;
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    /* y = vertical scroll, mandatory = force the snap */
+    scroll-snap-type: y mandatory; 
+    overflow-y: scroll;
+    overflow-x:hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh; /* Ensures body takes full screen height to center vertically */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: lightslategrey;
+    background-size: 400% 400%;
+ 
+}
+
+/* Background Animation */
+/* @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 50% 100%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 100% 50%; }
+} */
+
+ol {
+    position: fixed; /* Floats above all sections */
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Centers the fixed element */
+    z-index: 1000; /* Keeps it on top of the sections */
+    
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+li {
+ 
+    flex : 1 1 80px;
+    max-width: 120px;
+    width: 100px;
+    height: 45px;
+    display: flex;         /* Use flex to center text perfectly */
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    
+    /* THE MAGIC: Smooth Transition */
+    /* Transition 'all' properties over 0.3 seconds with a 'cubic-bezier' for a snappy feel */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+li:hover {
+    transform: translateY(-5px) scale(1.05); /* Moves UP slightly + grows */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+li:active {
+    transform: scale(0.95); /* Shrinks slightly when clicked for a physical feel */
+}
+
+/* 1. The base color of the link */
+a {
+  color: white; /* Replace 'coral' with your hex code like #ff5733 */
+  text-decoration: none; /* This removes the default underline */
+  transition: color 0.3s ease; /* This makes the color change smooth */
+}
+
+/* 2. What happens when you hover over it */
+a:hover {
+  color: darkslategrey; /* The color it changes to when your mouse is over it */
+}
+
+
+html {
+    scroll-snap-type: y mandatory;
+}
+
+section {
+    scroll-snap-align: start; /* Each section locks to the top */
+    scroll-snap-stop: always;  /* Forces the user to stop at every section */
+}
+section {
+    width: 100vw;       /* 100% of the viewport width */
+    height: 100vh;      /* 100% of the viewport height */
+    
+    /* Centering content inside the full-screen section */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Your Glassmorphism remains here */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+section {
+    height: 100vh;      /* Fallback for older browsers */
+    height: 100dvh;     /* Modern fix for mobile browser bars */
+}
